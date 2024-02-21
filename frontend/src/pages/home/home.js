@@ -1,11 +1,12 @@
 import React from 'react'
 import Slider from '../../components/slider/slider'
-import styles from '../../styles/Home.scss'
+import '../../styles/Home.scss'
 import HomeInfoBox from './homeInfoBox'
 import { productData } from '../../components/carousel/data'
 import CarouselItem from '../../components/carousel/carouselItem'
 import ProductCarousel from '../../components/carousel/carousel'
 import ProductCategory from './productCategory'
+import FooterLinks from '../../components/footer/footerLinks'
 const PageHeading = ({ heading, btnText }) => {
   return (
     <>
@@ -41,12 +42,19 @@ const Home = () => {
           <ProductCarousel products={productss}/>
         </div>
       </section>
-      <section className='--bt-grey'>
+      <section className='--bg-grey'>
         <div className='container'>
           <h3>Categories</h3>
           <ProductCategory/>
         </div>
       </section>
+      <section>
+        <div className='container'>
+          <PageHeading heading={"Mobile Phones"} btnText={"Shop Now >>>"}/>
+          <ProductCarousel products={productss}/>
+        </div>
+      </section>
+      <FooterLinks/>
     </>
   )
 }

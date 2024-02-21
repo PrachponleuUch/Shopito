@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import styles from '../../styles/Slider.scss'
+import '../../styles/Slider.scss'
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from 'react-icons/ai'
 import { sliderData } from './slider-data'
 import { useNavigate } from 'react-router-dom'
