@@ -4,6 +4,8 @@ const mongoose = require("mongoose")
 const cors = require("cors")
 const cookieParser = require("cookie-parser")
 const userRoute = require("./routes/userRoute")
+const errorHandler = require("./middleware/errorMiddleware")
+
 
 const app = express()
 
@@ -25,6 +27,8 @@ app.get("/", (req, res) => {
 
 app.use("/api/v1/users", userRoute)
 
+// Error Middleware
+app.use(errorHandler)
 const PORT = process.env.PORT || 5000
 
 mongoose
