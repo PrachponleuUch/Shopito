@@ -16,7 +16,7 @@ app.use(express.urlencoded({extended: false}))
 app.use(
   cors({
   origin: ["http://localhost:3000", "https://shopito-alex.vercel.app"],
-  credential: true
+  credentials: true
 }))
 
 
