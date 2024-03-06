@@ -10,6 +10,7 @@ import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 import { useDispatch } from "react-redux";
 import { getLoginStatus } from "./redux/features/auth/authSlice";
+import Profile from "./pages/profile/profile";
 
 const App = () => {
   // Every http request using axios will have withCredentials set to true by default
@@ -28,6 +29,7 @@ const App = () => {
           <Route path="/" element={<Home/>}/>
           <Route path="/login" element={<Login/>}/>
           <Route path="/register" element={<Register/>}/>
+          <Route path="/profile" element={<Profile/>}/>
         </Routes>
         <Footer/>
       </BrowserRouter>
