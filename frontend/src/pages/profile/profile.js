@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Card from '../../components/card/card'
 import { getUser, updateUser } from '../../redux/features/auth/authSlice'
 import Loader from '../../components/loader/loader'
+import { AiOutlineCloudUpload } from 'react-icons/ai'
 
 const Profile = () => {
   const { isLoading, user } = useSelector((state) => state.auth)
@@ -13,9 +14,16 @@ const Profile = () => {
     email: user?.email || '',
     phone: user?.phone || '',
     role: user?.role || '',
-    address: user?.address || {}
+    photo: user?.photo || '',
+    address: user?.address || {
+      address: user?.address?.address || '',
+      state: user?.address?.state || '',
+      country: user?.address?.country ||''
+    }
   }
   const [profile, setProfile] = useState(initialState)
+  const [profileImage, setProfileImage] = useState(null)
+  const [imagePreview, setImagePreview] = useState(null)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -31,7 +39,12 @@ const Profile = () => {
         email: user?.email || '',
         phone: user?.phone || '',
         role: user?.role || '',
-        address: user?.address || {}
+        photo: user?.photo || '',
+        address: user?.address || {
+          address: user?.address?.address || '',
+          state: user?.address?.state || '',
+          country: user?.address?.country ||''
+        }
       })
     }
   }, [dispatch, user])
@@ -51,8 +64,9 @@ const Profile = () => {
     // console.log(userData)
   }
 
-  const handleImageChange = () => {
-
+  const handleImageChange = (e) => {
+    setProfileImage(e.target.files[0])
+    setImagePreview(URL.createObjectURL(e.target.files[0]))
   }
 
   const handleInputChange = (e) => {
@@ -61,6 +75,10 @@ const Profile = () => {
       ...profile,
       [name]: value
     })
+  }
+
+  const savePhoto = async () => {
+    
   }
 
 
@@ -76,8 +94,17 @@ const Profile = () => {
               {!isLoading && (
                 <>
                   <div className="profile-photo">
-                    <h2>Profile Image</h2>
-                    <img src="" alt="" />
+                    <div>
+                      <img src={imagePreview === null ? user?.photo : imagePreview} alt="profile-image" />
+                      <h3>Role: {profile.role}</h3>
+                      {imagePreview !== null && (
+                        <div className='--center-all'>
+                          <button className="--btn --btn-secondary" onClick={savePhoto}>
+                            <AiOutlineCloudUpload size={18}/> Upload Photo
+                          </button>
+                        </div>
+                      )}
+                    </div>
                   </div>
                   <form onSubmit={saveProfile}>
                     <p>
