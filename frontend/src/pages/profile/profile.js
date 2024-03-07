@@ -121,9 +121,9 @@ const Profile = () => {
   return (
     <>
       <section>
-        {isLoading && <Loader/>}
+        {isLoading && <Loader />}
         <div className="container">
-          <PageMenu></PageMenu>
+          <PageMenu />
           <h2>Profile</h2>
           <div className="--flex-start profile">
             <Card cardClass={"card"}>

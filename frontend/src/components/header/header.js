@@ -32,7 +32,7 @@ const Header = () => {
     if (window.scrollY > 50){
       setScrollPage(true)
     } else {
-      setScrollPage(true)
+      setScrollPage(false)
     }
   }
   
