@@ -7,6 +7,7 @@ import { getUser, updatePhoto, updateUser } from '../../redux/features/auth/auth
 import Loader from '../../components/loader/loader'
 import { AiOutlineCloudUpload } from 'react-icons/ai'
 import { toast } from 'react-toastify'
+import { shortenText } from '../../utils'
 
 const cloudName = process.env.REACT_APP_CLOUD_NAME
 const uploadPreset = process.env.REACT_APP_UPLOAD_PRESET
@@ -222,6 +223,16 @@ const Profile = () => {
         </div>
       </section>
     </>
+  )
+}
+
+export const UserName = () => {
+  const { user } = useSelector((state) => state.auth)
+  const  username = user?.name || '...'
+  return (
+    <span style={{color: "#ff7722"}}>
+      Hi, {shortenText(username, 9)} | 
+    </span>
   )
 }
 
